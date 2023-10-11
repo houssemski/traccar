@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DevicesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::middleware('basicAuth')->group(function () {
+    //All the routes are placed in here
+    //Route::get('/devices', [DevicesController::class,'getDevices']);
+    Route::get('/positions', [DevicesController::class,'getPositions']);
 });
